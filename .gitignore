@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+style-errors.txt
+cypress/screenshots/
+cypress/videos/
