@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   value: string;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['title', 'description', 'thumbnail', 'comments'];
 
   ngOnInit() {
     this.dataSource = new SearchDataSource(this.paginator, this.sort);

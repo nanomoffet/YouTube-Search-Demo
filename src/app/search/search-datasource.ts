@@ -2,35 +2,30 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-
-// TODO: Replace this with your own data model type
-export interface SearchItem {
-  name: string;
-  id: number;
-}
+import { SearchItem } from './search-item.interface';
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: SearchItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  {title: 'Hydrogen', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Helium', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Lithium', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Beryllium', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Boron', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Carbon', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Nitrogen', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Oxygen', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Fluorine', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Neon', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Sodium', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Magnesium', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Aluminum', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Silicon', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Phosphorus', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Sulfur', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Chlorine', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Argon', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Potassium', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
+  {title: 'Calcium', description: '', thumb: 'http://www.placehold.it/75x75', commentCount: 50},
 ];
 
 /**
@@ -94,15 +89,14 @@ export class SearchDataSource extends DataSource<SearchItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'title': return compare(a.title, b.title, isAsc);
         default: return 0;
       }
     });
   }
 }
 
-/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
+/** Simple sort comparator for example ID/title columns (for client-side sorting). */
 function compare(a, b, isAsc) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
