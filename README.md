@@ -30,6 +30,12 @@ Run `npm run lint` to execute tslint.
 
 Run `npm run stylelint` to execute stylelint and check the scss files.
 
+## Generate Documentation
+
+Run `npm run docs` to generate documentation to upload remotely.
+
+Run `npm run serve-docs` to generate documentation and serve them up on a local node server instance. 
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

@@ -3,16 +3,18 @@
   "version": "0.0.0",
   "jest": {
     "preset": "jest-preset-angular",
-    "setupFilesAfterEnv": ["<rootDir>/src/setupJest.ts"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupJest.ts"
+    ],
     "roots": [
       "src/app/"
     ]
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --prod",
     "prebuild": "npm-run-all --parallel --silent lint stylelint test cypress:prebuild",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "jest",
     "lint": "ng lint",
     "test:watch": "jest --watch",
@@ -23,9 +25,7 @@
     "docs": "node_modules/.bin/compodoc -p tsconfig.json -d docs",
     "serve-docs": "node_modules/.bin/compodoc -s -d docs",
     "stylelint": "stylelint 'src/**/*.scss' --fix > style-errors.txt",
-    "commitmsg": "validate-commit-msg",
-    "cz": "git cz",
-    "precommit": "npm-run-all --parallel --silent lint stylelint test"
+    "cz": "git cz"
   },
   "private": true,
   "dependencies": {
@@ -50,6 +50,7 @@
     "@angular/cli": "~7.3.7",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
+    "@compodoc/compodoc": "^1.1.9",
     "@types/jest": "^24.0.11",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
@@ -72,6 +73,12 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "validate-commit-msg",
+      "pre-commit": "npm-run-all --parallel --silent lint stylelint test"
     }
   }
 }
