@@ -1,5 +1,7 @@
 # YoutubeSearchDemo
 
+See a demo [here](https://nanomoffet.github.io/YouTube-Search-Demo/)
+
 This demo utilizes the YouTube Search API v3.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
